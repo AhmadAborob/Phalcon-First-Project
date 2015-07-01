@@ -16,6 +16,17 @@ try {
 
     //Dependency Injection
     $di=new \Phalcon\Di\FactoryDefault();
+
+    $di->set('db',function(){
+        $db=new \Phalcon\Db\Adapter\Pdo\Mysql([
+            'host'=>'localhost',
+            'username'=>'root',
+            'password'=>'',
+            'dbname'=>'phalcon-learning'
+        ]);
+        return $db;
+    });
+
     $di->set('view',function(){
         $view=new \Phalcon\Mvc\View();
         $view->setViewsDir('../app/views');
