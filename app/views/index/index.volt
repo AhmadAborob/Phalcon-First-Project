@@ -1,7 +1,12 @@
-<div class="page-header">
-    <h1>Congratulations!</h1>
-</div>
+{% extends "templates/base.volt" %}
 
-<p>You're now flying with Phalcon. Great things are about to happen!</p>
+{%block content%}
 
-<em>This page is located at views/index/index.phtml</em>
+    <div class="jumbotron">
+        <h1>Fireball</h1>
+        <p>
+            fjfjfjfjfjfjfjfjfjfjfjfjfjf
+        </p>
+    </div>
+
+{%endblock%}
