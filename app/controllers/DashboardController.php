@@ -1,20 +1,20 @@
 <?php
+use Phalcon\Tag;
+
 /**
  * Created by PhpStorm.
  * User: aaborob
- * Date: 05/07/15
- * Time: 17:47
+ * Date: 06/07/15
+ * Time: 14:49
  */
-use Phalcon\Tag;
 
-class AdminController extends ControllerBase
-{
+class DashboardController extends ControllerBase {
+
     public function onConstruct(){
         parent::initialize();
     }
 
     public function indexAction(){
-        Tag::setTitle("Admin");
+        Tag::setTitle("Dashboard");
     }
 }
-

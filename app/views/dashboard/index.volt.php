@@ -26,13 +26,12 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="active"><a href="<?php echo $this->url->get('dashboard/'); ?>">Dashboard</a></li>
+                <li><a href="<?php echo $this->url->get('projects/'); ?>">Projects</a></li>
+                <li><a href="<?php echo $this->url->get('account/'); ?>">Account</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php echo $this->url->get('signin'); ?>">Signin</a></li>
-                <li><a href="<?php echo $this->url->get('signin/register'); ?>">Register</a></li>
+                <li><a href="<?php echo $this->url->get('index/signout'); ?>">Signout</a></li>
             </ul>
 
         </div>
@@ -44,9 +43,9 @@
 
 
     <div class="jumbotron">
-        <h1>Fireball</h1>
+        <h1>Dashboard</h1>
         <p>
-            PHALCON
+            Welcome User!
         </p>
     </div>
 

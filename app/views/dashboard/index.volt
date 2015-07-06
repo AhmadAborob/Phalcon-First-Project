@@ -1,11 +1,11 @@
-{% extends "templates/base.volt" %}
+{% extends "templates/dashboard.volt" %}
 
 {%block content%}
 
     <div class="jumbotron">
-        <h1>Fireball</h1>
+        <h1>Dashboard</h1>
         <p>
-            PHALCON
+            Welcome User!
         </p>
     </div>
 

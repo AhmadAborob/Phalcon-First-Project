@@ -7,8 +7,8 @@
     <?php echo $this->assets->outputCss('style'); ?>
     <?php echo $this->assets->outputJs('js'); ?>
     
+    <?php echo $this->assets->outputCss('additional'); ?>
 
-    
 </head>
 <body>
 
@@ -42,13 +42,16 @@
 <?php echo $this->flash->output(); ?>
 
 
-
-    <div class="jumbotron">
-        <h1>Fireball</h1>
-        <p>
-            PHALCON
-        </p>
-    </div>
+<form class="form-signin" method="post" action="<?php echo $this->url->get('doRegister'); ?>">
+        <h2 class="form-signin-heading">Register</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" >
+        <input type="password" name="confirm_password" id="inputPassword" class="form-control" placeholder="Confirm Password" >
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in">
+        <input type="hidden" name="<?php echo $this->security->getTokenKey(); ?>" value="<?php echo $this->security->getToken(); ?>"/>
+      </form>
 
 
 

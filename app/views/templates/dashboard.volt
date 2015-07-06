@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php echo $this->tag->getTitle(); ?>
+    {{get_title()}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo $this->assets->outputCss('style'); ?>
-    <?php echo $this->assets->outputJs('js'); ?>
-    
+    {{this.assets.outputCss('style')}}
+    {{this.assets.outputJs('js')}}
+    {%block head%}
 
-    
+    {%endblock%}
 </head>
 <body>
 
@@ -26,31 +26,23 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="active"><a href="{{url('dashboard/')}}">Dashboard</a></li>
+                <li><a href="{{url('projects/')}}">Projects</a></li>
+                <li><a href="{{url('account/')}}">Account</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<?php echo $this->url->get('signin'); ?>">Signin</a></li>
-                <li><a href="<?php echo $this->url->get('signin/register'); ?>">Register</a></li>
+                <li><a href="{{url('index/signout')}}">Signout</a></li>
             </ul>
 
         </div>
     </div>
 </div>
 
-<?php echo $this->flash->output(); ?>
+{{flash.output()}}
 
+{%block content%}
 
-
-    <div class="jumbotron">
-        <h1>Fireball</h1>
-        <p>
-            PHALCON
-        </p>
-    </div>
-
-
+{%endblock%}
 
 </body>
 </html>

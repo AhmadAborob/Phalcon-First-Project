@@ -3,10 +3,22 @@ use \Phalcon\Tag;
 class IndexController extends ControllerBase
 {
 
+    public function onConstruct(){
+        parent::initialize();
+    }
+
     public function indexAction()
     {
         Tag::setTitle("Home");
-        parent::initialize();
+    }
+
+    public function signoutAction(){
+        $this->session->destroy();
+        $this->response->redirect('/xampp/phalcon-learning');
+    }
+
+    public function generatePasswordAction($password){
+        echo $this->security->hash($password);
     }
 
     public function startSessionAction(){
