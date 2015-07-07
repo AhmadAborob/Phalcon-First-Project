@@ -27,7 +27,7 @@ try {
     //Set Base URL
     $di->set('url', function() {
         $url = new \Phalcon\Mvc\Url();
-        $url->setBaseUri('');
+        $url->setBaseUri('http://localhost/xampp/phalcon-learning/');
         return $url;
     }, true);
 

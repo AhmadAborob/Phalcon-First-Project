@@ -42,7 +42,7 @@
 <?php echo $this->flash->output(); ?>
 
 
-<form class="form-signin" method="post" action="<?php echo $this->url->get('doRegister'); ?>">
+<form class="form-signin" method="post" action="<?php echo $this->url->get('signin/doRegister'); ?>">
         <h2 class="form-signin-heading">Register</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" autofocus>

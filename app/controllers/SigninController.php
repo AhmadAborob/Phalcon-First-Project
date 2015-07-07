@@ -17,7 +17,7 @@ class SigninController extends ControllerBase
 
         $this->view->disable();
 
-        $this->component->helper->csrf('/xampp/phalcon-learning/signin');
+        $this->component->helper->csrf('signin');
 
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
@@ -26,25 +26,24 @@ class SigninController extends ControllerBase
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
                 $this->component->user->createSession($user);
-                $this->response->redirect('/xampp/phalcon-learning/dashboard');
+                $this->response->redirect('dashboard/index');
                 return;
             }
         }
 
         $this->flash->error('Incorrect Credentials');
-        $this->response->redirect('/xampp/phalcon-learning/signin');
-        //$this->response->redirect('signin/index');
+        $this->response->redirect('signin/index');
     }
 
     public function registerAction(){
         Tag::setTitle('Register');
-        $this->assets->collection("additional")->addCss("/xampp/phalcon-learning/css/signin.css");
+        $this->assets->collection("additional")->addCss("css/signin.css");
     }
 
     public function doRegisterAction(){
         if($this->security->checkToken()==false) {
             $this->flash->error('Invalid CSRF Token');
-            $this->response->redirect('/xampp/phalcon-learning/signin/register');
+            $this->response->redirect('signin/register');
             return;
         }
 
@@ -56,7 +55,7 @@ class SigninController extends ControllerBase
 
         if($password != $confirm_password){
             $this->flash->error("The Password Does not Match !");
-            $this->response->redirect('/xampp/phalcon-learning/signin/register');
+            $this->response->redirect('signin/register');
             return;
         }
 
@@ -73,10 +72,11 @@ class SigninController extends ControllerBase
             }
             $output=implode(',',$output);
             $this->flash->error($output);
-            $this->response->redirect('/xampp/phalcon-learning/signin/register');
+            $this->response->redirect('signin/register');
             return;
         }
-        $this->_createUserSession($user);
+        $this->component->user->createSession($user);
+        $this->response->redirect('dashboard/index');
         return;
     }
 }
