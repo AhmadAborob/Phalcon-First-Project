@@ -13,6 +13,12 @@ try {
         '../app/models',
         '../app/config'
     ]);
+
+    $loader->registerClasses([
+        'Component\User'=>'../app/components/User.php',
+        'Component\Helper'=>'../app/components/Helper.php',
+    ]);
+
     $loader->register();
 
     //Dependency Injection
@@ -58,6 +64,13 @@ try {
         $session=new \Phalcon\Session\Adapter\Files();
         $session->start();
         return $session;
+    });
+
+    $di->setShared('component',function(){
+        $obj=new stdClass();
+        $obj->helper= new \Component\Helper();
+        $obj->user=new \Component\User();
+        return $obj;
     });
 
     $di->set('flash',function(){

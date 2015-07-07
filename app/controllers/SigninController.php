@@ -13,21 +13,11 @@ class SigninController extends ControllerBase
         $this->assets->collection("additional")->addCss("css/signin.css");
     }
 
-    private function _createUserSession(User $user){
-        $this->session->set('id',$user->id);
-        $this->session->set('role',$user->role);
-        $this->response->redirect('/xampp/phalcon-learning/dashboard');
-    }
-
     public function doSigninAction(){
 
-        if($this->security->checkToken()==false){
-            $this->flash->error('Invalid CSRF Token');
-            $this->response->redirect('/xampp/phalcon-learning/signin');
-            return;
-        }
-
         $this->view->disable();
+
+        $this->component->helper->csrf('/xampp/phalcon-learning/signin');
 
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
@@ -35,7 +25,8 @@ class SigninController extends ControllerBase
         $user = User::findFirstByEmail($email);
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                $this->_createUserSession($user);
+                $this->component->user->createSession($user);
+                $this->response->redirect('/xampp/phalcon-learning/dashboard');
                 return;
             }
         }
